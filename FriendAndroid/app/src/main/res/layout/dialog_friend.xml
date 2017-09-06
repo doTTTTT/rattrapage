@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.dot.friendandroid.views.people.FriendViewModel"/>
+    </data>
+    <android.support.percent.PercentRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendFirstNameLayout"
+            android:hint="First Name"
+            app:layout_widthPercent="50%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendFirstName"
+                android:text="@{viewModel.user.FirstName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendLastNameLayout"
+            android:hint="Last Name"
+            android:layout_toRightOf="@id/friendFirstNameLayout"
+            app:layout_widthPercent="50%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendLastName"
+                android:text="@{viewModel.user.LastName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendDescriptionLayout"
+            android:hint="Description"
+            android:layout_below="@id/friendFirstNameLayout"
+            app:layout_widthPercent="100%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendDescription"
+                android:text="@{viewModel.user.Description}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/friendAge"
+            android:text="@{viewModel.user.DateOfBirth != null ? viewModel.user.DateOfBirth : @string/age}"
+            android:gravity="center"
+            android:onClick="@{viewModel::onClickAge}"
+            android:layout_below="@id/friendDescriptionLayout"
+            app:layout_widthPercent="50%"
+            app:layout_heightPercent="20%"/>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/friendRelationShip"
+            android:layout_below="@id/friendDescriptionLayout"
+            android:layout_toRightOf="@id/friendAge"
+            android:entries="@array/relationShip"
+            app:layout_widthPercent="50%"
+            app:layout_heightPercent="20%"
+            tools:setupValue="@{viewModel.user.RelationShip}"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendZipCodeLayout"
+            android:layout_below="@id/friendAge"
+            android:hint="ZipCode"
+            app:layout_widthPercent="30%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendZipCode"
+                android:text="@{viewModel.user.Address.ZipCode}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendStreetLayout"
+            android:hint="Street"
+            android:layout_below="@id/friendAge"
+            android:layout_toRightOf="@id/friendZipCodeLayout"
+            app:layout_widthPercent="100%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendStreet"
+                android:text="@{viewModel.user.Address.Street}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendCountryLayout"
+            android:hint="Country"
+            android:layout_below="@id/friendZipCodeLayout"
+            app:layout_marginLeftPercent="0.5%"
+            app:layout_widthPercent="33%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendCountry"
+                android:text="@{viewModel.user.Address.Country}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendStateLayout"
+            android:hint="State"
+            android:layout_below="@id/friendZipCodeLayout"
+            android:layout_toRightOf="@id/friendCountryLayout"
+            app:layout_widthPercent="33%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendState"
+                android:text="@{viewModel.user.Address.State}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/friendCityLayout"
+            android:hint="City"
+            android:layout_below="@id/friendZipCodeLayout"
+            android:layout_toRightOf="@id/friendStateLayout"
+            app:layout_marginRightPercent="0.5%"
+            app:layout_widthPercent="33%"
+            app:layout_heightPercent="20%">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/friendCity"
+                android:text="@{viewModel.user.Address.City}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+    </android.support.percent.PercentRelativeLayout>
+</layout>

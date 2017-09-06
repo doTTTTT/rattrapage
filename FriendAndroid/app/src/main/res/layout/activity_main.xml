@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.dot.friendandroid.views.main.MainViewModel"/>
+
+        <import type="com.dot.friendandroid.views.main.MainViewModel.Type" alias="Type"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.dot.friendandroid.views.main.MainActivity">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.percent.PercentRelativeLayout
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/userDetails"
+                    android:layout_margin="16dp"
+                    app:layout_widthPercent="100%"
+                    app:layout_heightPercent="40%"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="8dp">
+
+                    <android.support.percent.PercentRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/userFirstName"
+                            android:text="@{viewModel.firstName}"
+                            android:gravity="center"
+                            android:onClick="@{(v) -> viewModel.onClickField(v, Type.FIRSTNAME)}"
+                            app:layout_widthPercent="100%"
+                            app:layout_heightPercent="50%"/>
+
+                        <TextView
+                            android:id="@+id/userLastName"
+                            android:text="@{viewModel.lastName}"
+                            android:gravity="center"
+                            android:onClick="@{(v) -> viewModel.onClickField(v, Type.LASTNAME)}"
+                            android:layout_below="@id/userFirstName"
+                            app:layout_widthPercent="100%"
+                            app:layout_heightPercent="50%"/>
+                    </android.support.percent.PercentRelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/userFriendList"
+                    android:layout_below="@id/userDetails"
+                    app:layoutManager="LinearLayoutManager"
+                    app:layout_widthPercent="100%"
+                    app:layout_heightPercent="60%"/>
+            </android.support.percent.PercentRelativeLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/userAddPeople"
+            android:src="@android:drawable/ic_input_add"
+            android:onClick="@{viewModel::onClickAddPeople}"
+            android:layout_margin="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/refresh"
+            app:layout_anchorGravity="bottom|right"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/logOut"
+            android:src="@android:drawable/ic_lock_power_off"
+            android:onClick="@{viewModel::onClickLogOut}"
+            android:layout_margin="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/refresh"
+            app:layout_anchorGravity="bottom|left"/>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

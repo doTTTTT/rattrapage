@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.dot.friendandroid.views.inscription.InscriptionViewModel"/>
+    </data>
+    <android.support.percent.PercentRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/userEmailLayout"
+            android:hint="Email"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="80%"
+            app:layout_heightPercent="20%">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/userEmail"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/userPasswordLayout"
+            android:hint="Password"
+            android:layout_below="@id/userEmailLayout"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="80%"
+            app:layout_heightPercent="20%">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/userPassword"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/userPasswordConfLayout"
+            android:hint="Password Confirmation"
+            android:layout_below="@id/userPasswordLayout"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="80%"
+            app:layout_heightPercent="20%">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/userPasswordConf"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:text="Sign Up"
+            android:layout_below="@id/userPasswordConfLayout"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{(v) -> viewModel.onClickSignUp(v, userEmail, userPassword, userPasswordConf)}"
+            app:layout_marginTopPercent="10%"
+            app:layout_widthPercent="80%"
+            app:layout_heightPercent="20%" />
+    </android.support.percent.PercentRelativeLayout>
+</layout>

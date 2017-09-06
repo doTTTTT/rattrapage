@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.dot.friendandroid.views.main.ListItemPeopleViewModel"/>
+    </data>
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="4dp">
+
+        <android.support.percent.PercentRelativeLayout
+            android:onClick="@{viewModel::onClickCard}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:deleteListener="@{viewModel}">
+
+            <TextView
+                android:id="@+id/friendFirstName"
+                android:gravity="center"
+                android:text="@{viewModel.user.FirstName}"
+                app:layout_widthPercent="50%"
+                app:layout_heightPercent="15%"/>
+
+            <TextView
+                android:id="@+id/friendLastName"
+                android:gravity="center"
+                android:text="@{viewModel.user.LastName}"
+                android:layout_toRightOf="@id/friendFirstName"
+                app:layout_widthPercent="50%"
+                app:layout_heightPercent="15%"/>
+
+            <TextView
+                android:id="@+id/friendAge"
+                android:gravity="center"
+                android:text="@{viewModel.date}"
+                android:layout_below="@id/friendFirstName"
+                app:layout_widthPercent="50%"
+                app:layout_heightPercent="15%"/>
+
+            <TextView
+                android:id="@+id/friendPhone"
+                android:gravity="center"
+                android:text="@{viewModel.user.PhoneNumber}"
+                android:layout_below="@id/friendFirstName"
+                android:layout_toRightOf="@id/friendAge"
+                app:layout_widthPercent="50%"
+                app:layout_heightPercent="15%"/>
+
+            <TextView
+                android:id="@+id/friendRelationShip"
+                android:gravity="center"
+                android:text="@{viewModel.user.RelationShip}"
+                android:layout_below="@id/friendAge"
+                app:layout_widthPercent="100%"
+                app:layout_heightPercent="15%"/>
+
+            <TextView
+                android:id="@+id/friendAddress"
+                android:gravity="center"
+                android:text="@{viewModel.address}"
+                android:layout_below="@id/friendRelationShip"
+                app:layout_widthPercent="100%"
+                app:layout_heightPercent="20%"/>
+
+            <TextView
+                android:id="@+id/friendDescription"
+                android:gravity="center"
+                android:text="@{viewModel.user.Description}"
+                android:layout_below="@id/friendAddress"
+                app:layout_widthPercent="100%"
+                app:layout_heightPercent="35%"/>
+        </android.support.percent.PercentRelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

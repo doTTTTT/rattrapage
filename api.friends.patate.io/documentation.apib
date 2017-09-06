@@ -1,0 +1,70 @@
+FORMAT: 1A
+HOST: https://api.friends.patate.io
+
+# Friends documentation
+API friends documentation
+
+## Autorization
+Some requests need you to provide an API Key (generated via jsonwebtoken). You must sign in to get your token (see below).
+Weezyu expects for the API key to be included in requests where you must be an admin / user that looks like the following:
+
+```http
+Authorization: bearer 5262d64b892e8d4341000001
+```
+
+`5262d64b892e8d4341000001` is your api key
+
+## Users Collection [/users/]
+
+### List all users (admin) [GET]
+Get a list of users.
+
++ Response 200 (application/json)
+
+    [
+        {
+            "_id": "59a8bab86c5776e1c9360c58",
+            "__v": 2,
+            "disabled": false,
+            "role": "admin",
+            "people": [
+                {
+                    "_id": "59a8c877f3bbb320a8f6275f",
+                    "user_id": "59a8bab86c5776e1c9360c58",
+                    "__v": 0,
+                    "address": {
+                        "address_type": "work",
+                        "country": "France",
+                        "zipcode": "94270",
+                        "state": null,
+                        "city": "Kremlin Bicetre",
+                        "street": "24 rue pasteur"
+                    },
+                    "phone_number": "0142424242",
+                    "relationship": "girlfriend123",
+                    "description": null,
+                    "date_of_birth": "1900-12-29T23:00:00.000Z",
+                    "lastname": "Martinez",
+                    "firstname": "Fabien"
+                }
+            ]
+        },
+        {
+            "_id": "59a93b8a8d454054ca05e17e",
+            "__v": 0,
+            "disabled": false,
+            "role": "user",
+            "people": []
+        }
+    ]
+
+### View a user detail (admin) [GET]
+Get a user detail
+
++ Response 200 (application/json)
+
+    {
+        "role": "admin"
+    }
+
+### View our user detail (user) [GET]

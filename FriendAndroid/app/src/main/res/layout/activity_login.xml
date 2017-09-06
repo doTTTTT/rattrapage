@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.dot.friendandroid.views.login.LoginViewModel"/>
+    </data>
+    <android.support.percent.PercentRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:text="Friend"
+            android:textSize="32sp"
+            android:gravity="center"
+            app:layout_widthPercent="100%"
+            app:layout_heightPercent="40%"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/userEmailLayout"
+            android:hint="Email"
+            android:layout_below="@id/appTitle"
+            app:layout_widthPercent="100%"
+            app:layout_heightPercent="15%">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/userEmail"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/userPasswordLayout"
+            android:hint="Password"
+            android:layout_below="@id/userEmailLayout"
+            app:layout_widthPercent="100%"
+            app:layout_heightPercent="15%">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/userPassword"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/userSignIn"
+            android:text="Login"
+            android:onClick="@{(v) -> viewModel.onClickSignIn(v, userEmail, userPassword)}"
+            android:layout_below="@id/userPasswordLayout"
+            android:layout_centerInParent="true"
+            app:layout_widthPercent="90%"
+            app:layout_heightPercent="15%"/>
+
+        <TextView
+            android:text="Sign up"
+            android:gravity="center"
+            android:onClick="@{viewModel::onClickSignUp}"
+            android:layout_below="@id/userSignIn"
+            app:layout_widthPercent="100%"
+            app:layout_heightPercent="15%"/>
+    </android.support.percent.PercentRelativeLayout>
+</layout>
